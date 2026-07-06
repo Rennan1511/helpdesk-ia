@@ -144,12 +144,6 @@ export default function LoginPage() {
           <p>🛡️ Admin: omar@helpdesk.com</p>
 
           <p>👤 Usuário: usuario@helpdesk.com</p>
-
-          <div className="pt-3 border-t border-slate-800 mt-3">
-            <p>Super Admin: N@n1511</p>
-
-            <p>Demais usuários: 123456</p>
-          </div>
         </div>
       </div>
     </main>
