@@ -68,9 +68,8 @@ export default function UsuariosPage() {
         {
           id: 1,
           nome: "Administrador",
-          email:
-            "admin@helpdesk.com",
-          perfil: "Admin",
+          email:"admin@helpdesk.com",
+          perfil: "Super Admin",
           status: "Ativo",
         },
         {
@@ -185,7 +184,7 @@ export default function UsuariosPage() {
     usuarios.filter(
       (u) =>
         u.perfil ===
-        "Admin"
+        "Super Admin"
     ).length;
 
   const totalUsuariosComuns =
@@ -204,15 +203,16 @@ export default function UsuariosPage() {
     if (!usuarioSelecionado) return;
 
     const atualizados = usuarios.map((usuario) => {
-      if (usuario.id === usuarioSelecionado.id && usuario.perfil === "Usuário") {
-        return {
-          ...usuario,
-          senhaResetada: true,
-        };
-      }
+  if (usuario.id === usuarioSelecionado.id) {
+    return {
+      ...usuario,
+      senha: "123456",
+      senhaResetada: true,
+    };
+  }
 
-      return usuario;
-    });
+  return usuario;
+});
 
     localStorage.setItem(
       "usuarios",
@@ -356,11 +356,17 @@ export default function UsuariosPage() {
                   </td>
 
                   <td className="p-5">
-                    <span className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-xl text-sm">
-                      {
-                        usuario.perfil
-                      }
-                    </span>
+                    <span
+  className={`px-3 py-1 rounded-xl text-sm ${
+    usuario.perfil === "Super Admin"
+      ? "bg-red-500/20 text-red-400"
+      : usuario.perfil === "Admin"
+      ? "bg-yellow-500/20 text-yellow-400"
+      : "bg-blue-500/20 text-blue-400"
+  }`}
+>
+  {usuario.perfil}
+</span>
                   </td>
 
                   <td className="p-5">
@@ -373,18 +379,17 @@ export default function UsuariosPage() {
 
                   <td className="p-5 text-right">
                     <div className="flex items-center justify-end gap-3">
-                      {isAdmin &&
-                        usuario.perfil === "Usuário" && (
-                          <button
-                            onClick={() =>
-                              abrirResetSenha(usuario)
-                            }
-                            className="text-cyan-400 hover:text-cyan-300"
-                            title="Redefinir senha"
-                          >
-                            <KeyRound size={18} />
-                          </button>
-                        )}
+                      {isAdmin && (
+  <button
+    onClick={() =>
+      abrirResetSenha(usuario)
+    }
+    className="text-cyan-400 hover:text-cyan-300"
+    title="Redefinir senha"
+  >
+    <KeyRound size={18} />
+  </button>
+)}
 
                       <button
                         onClick={() =>
