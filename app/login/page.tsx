@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -17,56 +16,56 @@ export default function LoginPage() {
     useState(false);
 
   function entrar() {
-    /* ADMIN */
+    /* SUPER ADMIN */
     if (
-      email ===
-        "admin@helpdesk.com" &&
+      email === "admin@helpdesk.com" &&
       senha ===
         (localStorage.getItem("adminPassword") || "N@n1511")
     ) {
-      localStorage.setItem(
-        "auth",
-        "true"
-      );
-
-      localStorage.setItem(
-        "role",
-        "admin"
-      );
-
-      localStorage.setItem(
-        "userEmail",
-        email
-      );
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("role", "admin");
+      localStorage.setItem("userEmail", email);
 
       router.push("/");
     }
 
-    /* USER */
+    /* ADMIN HELBERT */
     else if (
-      email ===
-        "usuario@helpdesk.com" &&
+      email === "helbert@helpdesk.com" &&
+      senha ===
+        (localStorage.getItem("helbertPassword") || "123456")
+    ) {
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("role", "admin");
+      localStorage.setItem("userEmail", email);
+
+      router.push("/");
+    }
+
+    /* ADMIN OMAR */
+    else if (
+      email === "omar@helpdesk.com" &&
+      senha ===
+        (localStorage.getItem("omarPassword") || "123456")
+    ) {
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("role", "admin");
+      localStorage.setItem("userEmail", email);
+
+      router.push("/");
+    }
+
+    /* USUÁRIO */
+    else if (
+      email === "usuario@helpdesk.com" &&
       senha ===
         (localStorage.getItem("userPassword") || "123456")
     ) {
-      localStorage.setItem(
-        "auth",
-        "true"
-      );
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("role", "user");
+      localStorage.setItem("userEmail", email);
 
-      localStorage.setItem(
-        "role",
-        "user"
-      );
-
-      localStorage.setItem(
-        "userEmail",
-        email
-      );
-
-      router.push(
-        "/assistente"
-      );
+      router.push("/assistente");
     }
 
     /* ERRO */
@@ -96,9 +95,7 @@ export default function LoginPage() {
             <input
               value={email}
               onChange={(e) =>
-                setEmail(
-                  e.target.value
-                )
+                setEmail(e.target.value)
               }
               placeholder="Digite seu email"
               className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white outline-none focus:border-blue-500"
@@ -115,9 +112,7 @@ export default function LoginPage() {
               type="password"
               value={senha}
               onChange={(e) =>
-                setSenha(
-                  e.target.value
-                )
+                setSenha(e.target.value)
               }
               placeholder="Digite sua senha"
               className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white outline-none focus:border-blue-500"
@@ -140,19 +135,21 @@ export default function LoginPage() {
           </button>
         </div>
 
-        {/* LOGINS */}
+        {/* CONTAS DISPONÍVEIS */}
         <div className="mt-8 space-y-2 text-sm text-slate-500">
-          <p>
-            👑 Admin:
-            admin@helpdesk.com
-          </p>
+          <p>👑 Super Admin: admin@helpdesk.com</p>
 
-          <p>
-            👤 Usuário:
-            usuario@helpdesk.com
-          </p>
+          <p>🛡️ Admin: helbert@helpdesk.com</p>
 
-          <p>Senha</p>
+          <p>🛡️ Admin: omar@helpdesk.com</p>
+
+          <p>👤 Usuário: usuario@helpdesk.com</p>
+
+          <div className="pt-3 border-t border-slate-800 mt-3">
+            <p>Super Admin: N@n1511</p>
+
+            <p>Demais usuários: 123456</p>
+          </div>
         </div>
       </div>
     </main>

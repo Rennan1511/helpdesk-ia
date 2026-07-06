@@ -357,13 +357,13 @@ export default function UsuariosPage() {
 
                   <td className="p-5">
                     <span
-  className={`px-3 py-1 rounded-xl text-sm ${
-    usuario.perfil === "Super Admin"
-      ? "bg-red-500/20 text-red-400"
-      : usuario.perfil === "Admin"
-      ? "bg-yellow-500/20 text-yellow-400"
-      : "bg-blue-500/20 text-blue-400"
-  }`}
+                      className={`px-3 py-1 rounded-xl text-sm ${
+                    usuario.perfil === "Super Admin"
+                    ? "bg-red-500/20 text-red-400"
+                    : usuario.perfil === "Admin"
+                    ? "bg-yellow-500/20 text-yellow-400"
+                    : "bg-blue-500/20 text-blue-400"
+               }`}
 >
   {usuario.perfil}
 </span>
