@@ -188,9 +188,14 @@ export function gerarRelatorioChamados(chamados: Array<Record<string, any>>) {
   const porMes = Array.from({ length: 12 }, (_, index) => {
     const mes = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"][index];
     const quantidade = chamados.filter((ticket) => {
-      const data = new Date(ticket.data_hora || "");
-      return Number.isNaN(data.getTime()) ? false : data.getMonth() === index;
-    }).length;
+  if (!ticket.data_hora) return false;
+
+  const mes = Number(
+    ticket.data_hora.split(" ")[0].split("-")[1]
+  );
+
+  return mes === index + 1;
+}).length;
 
     return { mes, quantidade };
   }).filter((item) => item.quantidade > 0);
