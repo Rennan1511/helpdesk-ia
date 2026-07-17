@@ -269,24 +269,20 @@ function salvar() {
     </p>
 
     <p className="mt-2 text-xl">
-      {new Date(
-        ticket.data_hora
-      ).toLocaleDateString(
-        "pt-BR"
-      )}
-    </p>
+  {ticket.data_hora
+    ? ticket.data_hora
+        .split(" ")[0]
+        .replace(/-/g, "/")
+    : "-"}
+</p>
 
-    <p className="text-xl">
-      {new Date(
-        ticket.data_hora
-      ).toLocaleTimeString(
-        "pt-BR",
-        {
-          hour: "2-digit",
-          minute: "2-digit",
-        }
-      )}
-    </p>
+<p className="text-xl">
+  {ticket.data_hora
+    ? ticket.data_hora
+        .split(" ")[1]
+        .substring(0, 5)
+    : "-"}
+</p>
   </div>
 
   {/* ANALISTA */}

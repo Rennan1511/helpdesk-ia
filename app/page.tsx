@@ -178,25 +178,18 @@ const meses = [
 ];
 
 const chamadosPorMes =
-  meses.map(
-    (mes, index) => ({
-      mes,
-      chamados:
-        chamados.filter(
-          (c) => {
-            const data =
-              new Date(
-                c.data_hora
-              );
+  meses.map((mes, index) => ({
+    mes,
+    chamados: chamados.filter((c) => {
+      if (!c.data_hora) return false;
 
-            return (
-              data.getMonth() ===
-              index
-            );
-          }
-        ).length,
-    })
-  );
+      const mesChamado = Number(
+        c.data_hora.split(" ")[0].split("-")[1]
+      );
+
+      return mesChamado === index + 1;
+    }).length,
+  }));
     const chamadosFiltrados =
   chamados.filter((item) => {
     const buscaOk =

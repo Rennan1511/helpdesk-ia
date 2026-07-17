@@ -224,11 +224,9 @@ const chamadosPaginados =
 
 <td className="p-5 whitespace-nowrap text-slate-300">
   {item.data_hora
-    ? new Date(
-        item.data_hora
-      ).toLocaleDateString(
-        "pt-BR"
-      )
+    ? item.data_hora
+        .split(" ")[0]   // pega apenas a data
+        .replace(/-/g, "/") // troca - por /
     : "-"}
 </td>
 
