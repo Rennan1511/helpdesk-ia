@@ -7392,13 +7392,13 @@
     "prioridade": "Média"
   },
   {
-    "id": "2026-0673",
-    "data_hora": "16-07-2026 10:28:00",
+    "id": "2026-0674",
+    "data_hora": "20-07-2026 11:37:00",
     "titulo": "Diário",
-    "solicitante": "Filipe Almeida                               filipe.almeida@escolamobile.com.br",
-    "descricao": "Bom dia, Rennan!\nTudo bem contigo?\nSou Filipe assistente das turmas G2 do 1o ano, do professor Gabriel Pegorini, de Inglês do EM.\nAo tentar criar o evento plantão de recuperação dos alunos do 1o ano G2 tive um problema: No caixa de seleção de selecionar turmas, as listas que aparecem trazem apenas os alunos do outro grupo, G1 do professor Bernardo. Logo, não consegui criar o evento e atualizar as presenças/faltas.",
+    "solicitante": "Giulia Capuzzo Padroni                               giulia.padroni@escolamobile.com.br",
+    "descricao": "No 2º Semestre, Fiquarei responsável pelas turmas do 5 ano Regular de ING (G1 e G2). Peço que remova minha permissão antiga e libere no diário a do 5 ano.",
     "status": "Resolvido",
-    "solucao": "Realizei um teste em homolog do diário criando aula de Plantão de recuperação selecionando somente turma G2 do 1 ano, Funcionou normalmente. Passei o processo pra ele testar novamente e ele conseguiu criar.",
+    "solucao": "Removemos as turmas do 2 e 3 ano regular e adicionamos todas do 5 ano.",
     "analista_responsavel": "RENNAN",
     "prioridade": "Média"
   }

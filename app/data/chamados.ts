@@ -7417,5 +7417,16 @@ export const tickets: ITicket[] = [
     "solucao": "Realizei um teste em homolog do diário criando aula de Plantão de recuperação selecionando somente turma G2 do 1 ano, Funcionou normalmente. Passei o processo pra ele testar novamente e ele conseguiu criar.",
     "analista_responsavel": "RENNAN",
     "prioridade": "Média"
+  },
+  {
+    "id": "2026-0674",
+    "data_hora": "20-07-2026 11:37:00",
+    "titulo": "Diário",
+    "solicitante": "Giulia Capuzzo Padroni                               giulia.padroni@escolamobile.com.br",
+    "descricao": "No 2º Semestre, Fiquarei responsável pelas turmas do 5 ano Regular de ING (G1 e G2). Peço que remova minha permissão antiga e libere no diário a do 5 ano.",
+    "status": "Resolvido",
+    "solucao": "Removemos as turmas do 2 e 3 ano regular e adicionamos todas do 5 ano.",
+    "analista_responsavel": "RENNAN",
+    "prioridade": "Média"
   }
 ]
