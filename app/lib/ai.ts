@@ -1,99 +1,82 @@
+type Ticket = {
+  titulo?: string;
+  descricao?: string;
+  status?: string;
+  analista_responsavel?: string;
+  data_hora?: string;
+};
+
+type Relatorio = {
+  total: number;
+  resolvidos: number;
+  emAndamento: number;
+  abertos: number;
+  topAnalista: string;
+  topAnalistaQuantidade: number;
+  problemaPrincipal: string;
+  topProblemas: [string, number][];
+  rankingAnalistas: [string, number][];
+  porMes: Array<{ mes: string; quantidade: number }>;
+  resumo: string;
+};
+
+function containsAny(text: string, terms: string[]) {
+  return terms.some((term) => text.includes(term));
+}
+
 export function analisarChamado(
   titulo: string,
   descricao: string
 ) {
-  const texto =
-    `${titulo} ${descricao}`.toLowerCase();
+  const texto = `${titulo} ${descricao}`.toLowerCase();
 
-  let prioridade =
-    "Média";
+  let prioridade = "Média";
+  let categoria = "Suporte Geral";
+  let responsavel = "Equipe N1";
+  let sugestao = "Análise inicial realizada pela IA.";
 
-  let categoria =
-    "Suporte Geral";
-
-  let responsavel =
-    "Equipe N1";
-
-  let sugestao =
-    "Análise inicial realizada pela IA.";
-
-  /* ERP */
   if (
-    texto.includes("erp") ||
-    texto.includes("totvs") ||
-    texto.includes("rm")
+    containsAny(texto, [
+      "senha",
+      "acesso",
+      "login",
+      "autentica",
+      "credencial",
+      "cadastro",
+      "permiss",
+    ])
   ) {
-    categoria = "ERP";
-
-    responsavel =
-      "Equipe ERP";
-
-    sugestao =
-      "Validar serviços do ERP e integrações.";
-
+    categoria = "Acesso e permissões";
+    responsavel = "Equipe de Acesso";
+    sugestao = "Validar credenciais, permissões e autenticação.";
     prioridade = "Alta";
-  }
-
-  /* INTERNET */
-  if (
-    texto.includes("internet") ||
-    texto.includes("wifi") ||
-    texto.includes("vpn") ||
-    texto.includes("rede")
+  } else if (
+    containsAny(texto, ["internet", "wifi", "vpn", "rede", "conexão", "conexao", "dns", "firewall"])
   ) {
-    categoria =
-      "Infraestrutura";
-
-    responsavel =
-      "Equipe Redes";
-
-    sugestao =
-      "Verificar conectividade, DNS e firewall.";
-
+    categoria = "Infraestrutura";
+    responsavel = "Equipe Redes";
+    sugestao = "Verificar conectividade, DNS e firewall.";
     prioridade = "Alta";
-  }
-
-  /* EMAIL */
-  if (
-    texto.includes("email") ||
-    texto.includes("outlook")
-  ) {
-    categoria =
-      "Correio Eletrônico";
-
-    responsavel =
-      "Equipe Microsoft";
-
-    sugestao =
-      "Validar autenticação e caixa postal.";
-  }
-
-  /* IMPRESSORA */
-  if (
-    texto.includes("impressora") ||
-    texto.includes("imprimir")
-  ) {
-    categoria =
-      "Impressoras";
-
-    responsavel =
-      "Field Service";
-
-    sugestao =
-      "Validar spooler e conectividade USB/rede.";
-
+  } else if (containsAny(texto, ["email", "outlook", "gmail", "correio", "correio eletrônico", "correio eletronico"])) {
+    categoria = "Correio Eletrônico";
+    responsavel = "Equipe Microsoft";
+    sugestao = "Validar autenticação e caixa postal.";
+  } else if (containsAny(texto, ["impressora", "imprimir", "scanner", "cópia", "copiar"])) {
+    categoria = "Impressoras";
+    responsavel = "Field Service";
+    sugestao = "Validar spooler e conectividade USB/rede.";
     prioridade = "Baixa";
+  } else if (containsAny(texto, ["erp", "totvs", "rm"])) {
+    categoria = "ERP";
+    responsavel = "Equipe ERP";
+    sugestao = "Validar serviços do ERP e integrações.";
+    prioridade = "Alta";
   }
 
-  /* URGENTE */
   if (
-    texto.includes("urgente") ||
-    texto.includes("parado") ||
-    texto.includes("critico") ||
-    texto.includes("crítico")
+    containsAny(texto, ["urgente", "parado", "critico", "crítico"])
   ) {
-    prioridade =
-      "Crítica";
+    prioridade = "Crítica";
   }
 
   return {
@@ -104,62 +87,63 @@ export function analisarChamado(
   };
 }
 
-function classificarTema(ticket: Record<string, any>) {
+function classificarTema(ticket: Ticket) {
   const texto = `${ticket.titulo || ""} ${ticket.descricao || ""}`.toLowerCase();
 
   if (
-    texto.includes("erp") ||
-    texto.includes("totvs") ||
-    texto.includes("rm")
-  ) {
-    return "ERP/TOTVS";
-  }
-
-  if (
-    texto.includes("senha") ||
-    texto.includes("acesso") ||
-    texto.includes("cadastro") ||
-    texto.includes("permiss")
+    containsAny(texto, ["senha", "acesso", "login", "permiss", "cadastro", "autentica", "credencial"])
   ) {
     return "Acesso e permissões";
   }
 
   if (
-    texto.includes("rede") ||
-    texto.includes("wifi") ||
-    texto.includes("vpn") ||
-    texto.includes("internet")
+    containsAny(texto, ["enturma", "turma", "mudar", "mudança", "transfer", "alocar", "salas cheias", "lotação", "lotacao"]) &&
+    containsAny(texto, ["totvs", "mv", "diário", "diario"])
+  ) {
+    return "Enturmação / TOTVS";
+  }
+
+  if (
+    containsAny(texto, ["relatório", "relatorio", "listagem", "exportar"]) &&
+    containsAny(texto, ["totvs", "erp", "rm"])
+  ) {
+    return "Relatórios TOTVS";
+  }
+
+  if (
+    containsAny(texto, ["internet", "wifi", "vpn", "rede", "conexão", "conexao", "dns", "firewall"])
   ) {
     return "Infraestrutura";
   }
 
   if (
-    texto.includes("email") ||
-    texto.includes("outlook")
+    containsAny(texto, ["email", "outlook", "gmail", "correio", "correio eletrônico", "correio eletronico"])
   ) {
     return "Email";
   }
 
   if (
-    texto.includes("impressora") ||
-    texto.includes("imprimir")
+    containsAny(texto, ["impressora", "imprimir", "scanner", "cópia", "copiar"])
   ) {
-    return "Impressora";
+    return "Impressoras";
   }
 
   if (
-    texto.includes("mv") ||
-    texto.includes("diario") ||
-    texto.includes("diário") ||
-    texto.includes("editema")
+    containsAny(texto, ["mv", "diario", "diário", "editema", "edu", "plataforma", "plataformas"])
   ) {
     return "Plataformas MV/Diário";
+  }
+
+  if (
+    containsAny(texto, ["erp", "totvs", "rm"])
+  ) {
+    return "ERP/TOTVS";
   }
 
   return "Outros";
 }
 
-export function gerarRelatorioChamados(chamados: Array<Record<string, any>>) {
+export function gerarRelatorioChamados(chamados: Ticket[]) {
   const total = chamados.length;
   const resolvidos = chamados.filter((ticket) => ticket.status === "Resolvido").length;
   const emAndamento = chamados.filter((ticket) => ticket.status === "Em andamento" || ticket.status === "Em Andamento").length;
@@ -217,7 +201,7 @@ export function gerarRelatorioChamados(chamados: Array<Record<string, any>>) {
   };
 }
 
-export function gerarResumoComIA(relatorio: Record<string, any>) {
+export function gerarResumoComIA(relatorio: Relatorio) {
   const analistasTexto = (relatorio.rankingAnalistas || []).slice(0, 3).map((item: [string, number]) => `${item[0]} (${item[1]})`).join(", ") || "Nenhum";
   const problemasTexto = (relatorio.topProblemas || []).map((item: [string, number]) => `${item[0]} (${item[1]})`).join(", ") || "Nenhum";
 

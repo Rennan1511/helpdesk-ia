@@ -1,27 +1,34 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FileBarChart2, Sparkles, Users, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { getTickets } from "../utils/tickets";
 import { gerarRelatorioChamados, gerarResumoComIA } from "../lib/ai";
 
+type Ticket = {
+  id?: string | number;
+  titulo?: string;
+  descricao?: string;
+  status?: string;
+  analista_responsavel?: string;
+  data_hora?: string;
+};
+
 export default function RelatoriosPage() {
-  const [chamados, setChamados] = useState<any[]>([]);
+  const [chamados] = useState<Ticket[]>(() => getTickets());
   const [gerando, setGerando] = useState(false);
   const [resumoIa, setResumoIa] = useState("");
-
-  useEffect(() => {
-    setChamados(getTickets());
-  }, []);
 
   const relatorio = useMemo(() => gerarRelatorioChamados(chamados), [chamados]);
 
   function gerarResumo() {
+    setResumoIa("");
     setGerando(true);
+
     setTimeout(() => {
       setResumoIa(gerarResumoComIA(relatorio));
       setGerando(false);
-    }, 900);
+    }, 1100);
   }
 
   return (
@@ -43,14 +50,17 @@ export default function RelatoriosPage() {
           <button
             onClick={gerarResumo}
             disabled={gerando}
-            className={`relative overflow-hidden px-6 py-4 rounded-2xl flex items-center justify-center gap-3 font-medium transition-all ${
+            className={`relative overflow-hidden px-6 py-4 rounded-2xl flex items-center justify-center gap-3 font-medium transition-all duration-300 ${
               gerando
-                ? "bg-cyan-600/90 text-white shadow-[0_0_30px_rgba(34,211,238,0.35)]"
+                ? "bg-cyan-600/95 text-white shadow-[0_0_30px_rgba(34,211,238,0.35)]"
                 : "btn-primary"
             }`}
           >
-            <span className={`absolute inset-0 rounded-2xl ${gerando ? "animate-pulse bg-cyan-400/20" : ""}`} />
-            <span className={`relative flex items-center gap-3 ${gerando ? "animate-[spin_1.2s_linear_infinite]" : ""}`}>
+            {gerando && (
+              <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-300 via-sky-200 to-cyan-500/0 animate-[pulse_2.2s_ease-in-out_infinite]" />
+            )}
+            <span className={`absolute inset-0 rounded-2xl ${gerando ? "bg-cyan-400/15" : ""}`} />
+            <span className={`relative flex items-center gap-3 ${gerando ? "animate-[pulse_1.8s_ease-in-out_infinite]" : ""}`}>
               <Sparkles size={18} className={gerando ? "text-cyan-100" : ""} />
               {gerando ? "IA analisando chamados..." : "Gerar relatório com IA"}
             </span>
