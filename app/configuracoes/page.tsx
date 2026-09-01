@@ -39,6 +39,9 @@ export default function ConfiguracoesPage() {
 const dark =
   theme === "dark";
 
+  const [tempTheme, setTempTheme] =
+    useState<"dark" | "light">(theme);
+
   const [notificacoes, setNotificacoes] =
     useState(true);
 
@@ -82,6 +85,7 @@ const dark =
 
     setRole(storedRole);
     setEmailAtual(storedEmail);
+    setTempTheme(theme);
 
     const handleUsuariosAtualizados = () => {
       carregarUsuarios();
@@ -106,7 +110,7 @@ const dark =
         handleUsuariosAtualizados
       );
     };
-  }, []);
+  }, [theme]);
 
   function carregarUsuarios() {
     const usuariosSalvos = JSON.parse(
@@ -121,6 +125,17 @@ const dark =
   }
 
   function salvar() {
+    // Salvar tema se foi alterado
+    if (tempTheme !== theme) {
+      toggleTheme();
+    }
+
+    // Salvar outras configurações se necessário
+    localStorage.setItem("empresa", empresa);
+    localStorage.setItem("emailSuporte", emailSuporte);
+    localStorage.setItem("backup", JSON.stringify(backup));
+    localStorage.setItem("notificacoes", JSON.stringify(notificacoes));
+
     setShowSuccessModal(true);
   }
 
@@ -291,26 +306,32 @@ const dark =
       <div>
         <p className="font-semibold">Tema atual</p>
         <p className={`text-sm mt-1 ${dark ? "text-slate-400" : "text-slate-600"}`}>
-          {dark ? "Escuro ativo" : "Claro ativo"}
+          {tempTheme === "dark" ? "Escuro" : "Claro"} (selecionado)
         </p>
       </div>
 
       <button
-        onClick={toggleTheme}
+        onClick={() =>
+          setTempTheme(
+            tempTheme === "dark"
+              ? "light"
+              : "dark"
+          )
+        }
         className="relative inline-flex h-8 w-16 items-center rounded-full transition-colors duration-300 focus:outline-none"
         aria-label="Alternar tema"
       >
         <span
           className={`absolute inset-0 rounded-full transition-colors duration-300 ${
-            dark ? "bg-blue-600" : "bg-slate-300"
+            tempTheme === "dark" ? "bg-blue-600" : "bg-slate-300"
           }`}
         />
         <span
           className={`relative ml-1 inline-flex h-5 w-5 transform items-center justify-center rounded-full bg-white text-xs shadow transition-transform duration-300 ${
-            dark ? "translate-x-7" : "translate-x-0"
+            tempTheme === "dark" ? "translate-x-7" : "translate-x-0"
           }`}
         >
-          {dark ? "🌙" : "☀️"}
+          {tempTheme === "dark" ? "🌙" : "☀️"}
         </span>
       </button>
     </div>

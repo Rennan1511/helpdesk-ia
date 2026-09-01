@@ -167,35 +167,35 @@ const chamadosPaginados =
         </div>
 
         {/* Tabela */}
-        <div className="mt-10 surface-card overflow-hidden">
-          <table className="w-full">
-            <thead className="surface-panel">
+        <div className="mt-10 surface-card overflow-x-auto">
+          <table className="w-full min-w-max">
+            <thead className="surface-panel sticky top-0">
               <tr>
-                <th className="text-left p-5">
+                <th className="text-left p-5 whitespace-nowrap">
                   ID
                </th>
 
-                <th className="text-left p-5">
+                <th className="text-left p-5 min-w-[200px]">
                   Título
                </th>
 
-                <th className="text-left p-5">
+                <th className="text-left p-5 whitespace-nowrap">
                   Data
                </th>
 
-                <th className="text-left p-5">
+                <th className="text-left p-5 whitespace-nowrap">
                   Analista
                </th>
 
-                <th className="text-left p-5">
+                <th className="text-left p-5 whitespace-nowrap">
                   Prioridade
                </th>
 
-                <th className="text-left p-5">
+                <th className="text-left p-5 whitespace-nowrap">
                   Status
                 </th>
 
-                <th className="text-left p-5">
+                <th className="text-left p-5 min-w-[250px]">
                   Descrição
                   
                 </th>
@@ -218,7 +218,7 @@ const chamadosPaginados =
   #{item.id}
 </td>
 
-<td className="p-5 font-medium">
+<td className="p-5 font-medium break-words">
   {item.titulo}
 </td>
 
@@ -230,24 +230,24 @@ const chamadosPaginados =
     : "-"}
 </td>
 
-<td className="p-5 text-slate-300">
+<td className="p-5 text-slate-300 whitespace-nowrap">
   {item.analista_responsavel ||
     "-"}
 </td>
 
-<td className="p-5">
+<td className="p-5 whitespace-nowrap">
   <span className="bg-blue-600 px-3 py-1 rounded-lg text-sm">
     {item.prioridade}
   </span>
 </td>
 
-<td className="p-5">
+<td className="p-5 whitespace-nowrap">
   <StatusBadge
     status={item.status}
   />
 </td>
 
-<td className="p-5 text-slate-400 max-w-xl">
+<td className="p-5 text-slate-400 break-words">
   <p className="line-clamp-2">
     {item.descricao}
   </p>
