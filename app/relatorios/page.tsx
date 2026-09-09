@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FileBarChart2, Sparkles, Users, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { getTickets } from "../utils/tickets";
 import { gerarRelatorioChamados, gerarResumoComIA } from "../lib/ai";
+import { tickets } from "../data/chamados";
 
 type Ticket = {
   id?: string | number;
@@ -15,9 +16,17 @@ type Ticket = {
 };
 
 export default function RelatoriosPage() {
-  const [chamados] = useState<Ticket[]>(() => getTickets());
+  const [chamados, setChamados] = useState<Ticket[]>(tickets);
   const [gerando, setGerando] = useState(false);
   const [resumoIa, setResumoIa] = useState("");
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      setChamados(getTickets());
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   const relatorio = useMemo(() => gerarRelatorioChamados(chamados), [chamados]);
 

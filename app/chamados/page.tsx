@@ -15,11 +15,16 @@ import {
   getTickets,
 } from "../utils/tickets";
 
+import {
+  tickets,
+  type ITicket,
+} from "../data/chamados";
+
 export default function ChamadosPage() {
   const router = useRouter();
 
   const [chamados, setChamados] =
-    useState<any[]>([]);
+    useState<ITicket[]>(tickets);
 
  const [busca, setBusca] =
   useState("");
@@ -37,18 +42,22 @@ const [
 const itensPorPagina = 20;
 
 useEffect(() => {
-  const data = getTickets().map(
-  (ticket: any) => ({
-    ...ticket,
-    status:
-      ticket.solucao &&
-      ticket.solucao.trim() !== ""
-        ? "Resolvido"
-        : ticket.status,
-  })
-);
+  const timeoutId = window.setTimeout(() => {
+    const data = getTickets().map(
+      (ticket: ITicket) => ({
+        ...ticket,
+        status:
+          ticket.solucao &&
+          ticket.solucao.trim() !== ""
+            ? "Resolvido"
+            : ticket.status,
+      })
+    );
 
-setChamados(data);
+    setChamados(data);
+  }, 0);
+
+  return () => window.clearTimeout(timeoutId);
 }, []);
 
 const chamadosFiltrados =
