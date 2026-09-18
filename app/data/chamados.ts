@@ -7655,8 +7655,8 @@ export const tickets: ITicket[] = [
     "titulo": "MV",
     "solicitante": "Julia Castro\njulia.castro@escolamobile.com.br",
     "descricao": "Oi Rennan, bom dia!\n\nConsegue me ajudar com uma coisa? Estava olhando a parte de gabaritos do MV da COED do 3º ano, que era o local de todos os gabaritos do semestre, e ele aparecem assim:\n\n\"Tela de Gabaritos em Branco..\"",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado o ajuste na visualização dos Gabaritos de Provas Testes no MV.",
     "analista_responsavel": "REINALDO/HELBERT",
     "prioridade": "Média"
   },
@@ -7886,8 +7886,8 @@ export const tickets: ITicket[] = [
     "titulo": "MV",
     "solicitante": "Alicia Bernardo\nalicia.bernardo@escolamobile.com.br",
     "descricao": "Bom dia, pessoal!\nEspero que estejam bem.\nOs gabaritos das provas deste ano não estão disponíveis para acesso. Ao tentarmos abri-los, é exibida uma mensagem de erro. Identificamos que o mesmo problema ocorre em outras disciplinas, como Estudos Literários, Biologia, e também no módulo da Coordenação.\nOs alunos estão utilizando esses materiais para estudar para as provas de recuperação, por isso, seria muito importante conseguirmos restabelecer o acesso o quanto antes.\nPoderiam, por gentileza, verificar essa situação?\n\nObrigada!",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado o ajuste na visualização dos Gabaritos de Provas Testes no MV.",
     "analista_responsavel": "HELBERT",
     "prioridade": "Média"
   },
@@ -8337,8 +8337,8 @@ export const tickets: ITicket[] = [
     "titulo": "Exclusiva",
     "solicitante": "Giovana Siqueira                         giovana.siqueira@escolamobile.com.br",
     "descricao": "Boa tarde, como estão?\nConforme antecipado ao Rennan, os alunos abaixo não estão conseguindo fazer matrícula em alguns cursos, pois aparece apenas a informação de ver resumo.\n\nSofia Riboldi Tribuci\nEnzo Riboldi Tribuci\nAna maraccini de assis\n\nPoderiam verificar, por favor?\nObrigada!",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado um retorno pelo Cesar a respeito disso. Parece que tinha algo relacionado a alunos que fizeram parte da fila de espera, foram chamados e perderam o prazo de matrícula.",
     "analista_responsavel": "MAIK/HELBERT",
     "prioridade": "Média"
   },
@@ -8502,8 +8502,8 @@ export const tickets: ITicket[] = [
     "titulo": "Looker",
     "solicitante": "Camilla Silva\nCamilla.Silva@escolamobile.com.br",
     "descricao": "Bom dia, pessoal! Tudo bem?\nGostaria de solicitar uma atualização na planilha de observação de aula do 3º ano:\nNeste segundo semestre, dois alunos saíram da escola:\nMatheus Carvas de Araújo\nJoaquim de Sampaio Doria\nAlém disso, entrou um novo aluno na turma 3ºD:\nBernardo Melo Perdigão\nPoderiam, por gentileza, realizar a atualização na aba Parâmetros, removendo os alunos que saíram e adicionando o novo aluno?\nEssa alteração é importante para evitar futuros erros no Data Studio relacionados ao RA dos alunos.\nSegue o link da planilha caso necessitem: https://docs.google.com/spreadsheets/d/1j_9Jkykb5E5y9KdhV57IKo4bbLJERqmOdNOWvm1BrN8/edit?usp=sharing\nDesde já, agradeço pela ajuda!\nObrigada.\n\nCamilla Silva",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado um verificação na possibilidade de remover os alunos, porém essa remoção pode acarretar em falhar no Relatório do Looker devido haver muitas informações distintas sobre notas, presenças e coisas que são vinculadas aos alunos e RA's desse alunos. Portanto foi decidido o mantimento das infromações desse alunso tanto no Looker quando na Planilha onde os dados estão armazenados.",
     "analista_responsavel": "HELBERT",
     "prioridade": "Média"
   },
@@ -8711,8 +8711,8 @@ export const tickets: ITicket[] = [
     "titulo": "Diário/MV",
     "solicitante": "Rogerio Gusmao\nrogerio.viana@escolamobile.com.br",
     "descricao": "Pessoal, bom dia.\n\nGostaríamos de ajuda com o problema que os prints a seguir ilustram.\n\nEsclareço: estamos acompanhando as LCs desse aluno Lucas Casado. Como se vê no print do Diário do professor de DG, ele não fez as Lições de Casa da disciplina até então, neste semestre:\n________________________________________________________________________________________________\nImagem Mostrando a Presença do Aluno LUCAS CARDOSO CASADO em 66.67% e a Lição em 0%\n-------------------------------------------------------------------------------------------------------------------------------------------------------------\nEntretanto, quando abrimos o relatório de notas e aprendizagem desse aluno, a informação sobre a porcentagem de lição (0%) não aparece, bem como aquelas datas que são mostradas nesse caso (as datas das lições não feitas).\n_______________________________________________________________________\nImagem mostrando o RNA sem constar o Percentual de Lição de Casa\n--------------------------------------------------------------------------------------------------------------------\nA lição em questão foi passada e registrada na semana passada, de modo que não me parece um problema de atualização do diário ou do RNA.\n\nPodem nos ajudar a entender o que está havendo e solucionar essa questão?\n\nGrato,\n\nRogério Viana\nCOORDENAÇÃO",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado os devidos ajustes nas informações apresentadas no RNA sobre Percentual de Lição de Casa.",
     "analista_responsavel": "HELBERT",
     "prioridade": "Média"
   },
@@ -8722,8 +8722,8 @@ export const tickets: ITicket[] = [
     "titulo": "Diário",
     "solicitante": "Renan Santos\nrenan.santos@escolamobile.com.br",
     "descricao": "Bom dia, tudo bem?\n\nEu sou professor assistente de espanhol e entrei há pouco tempo aqui na Móbile.\n\nQueria saber como faço para lançar as notas da recuperação semestral do 1º semestre, não encontrei o campo no diário.\n\nVocês poderiam me ajudar com isso, por gentileza?\n\nMuito obrigado,\n\nRenan Santos",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "O professor não deu mais retorno para que pudéssemos entender mais exatamente de qual avaliação se trataria esse lançamento.",
     "analista_responsavel": "HELBERT",
     "prioridade": "Média"
   },
@@ -8755,8 +8755,8 @@ export const tickets: ITicket[] = [
     "titulo": "Enturmação",
     "solicitante": "Joao Inoue\njoao.inoue@escolamobile.com.br",
     "descricao": "Boa tarde, pessoal! Tudo certo?\n\nEscrevo, para solicitar uma mudança de um aluno na turma no diário de classe.\n\nO aluno do 1ºF (C1FM) LORENZO DURO PIGATTO está matriculado no diário de classe na turma da Simulação da ONU (1SMO.E.T1 - SMO.E), entretanto, o curso correto dele é o Model UN (1MUN.I.T1 - MUN.I).\n\nVocês poderiam mudar ele no diário da turma do curso de Simulação ONU para o curso de Model UN, por favor?\n\nAtenciosamente,\nJoão Inoue",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado a mudança na enturmação desse aluno.",
     "analista_responsavel": "HELBERT",
     "prioridade": "Média"
   },
@@ -8920,8 +8920,8 @@ export const tickets: ITicket[] = [
     "titulo": "Diário/MV",
     "solicitante": "Lara Rocha\nlara.rocha@escolamobile.com.br",
     "descricao": "Olá pessoal, tudo bem? Boa tarde!\n\nO assistente novo de História (Eduardo de Souza Goiabeira - eduardo.goiabeira) está com o login certo no e-mail mas no portal, está como eduardo.goaiabeira. Por gentileza, preciso que vocês alterem para o nome correto dele. Além disso, está sem acesso ao MV e ao diário de História do 8º e do 9º ano. Vocês podem providenciar, por favor?\n\nFico à disposição\n\nAtenciosamente\nLara",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado a inclusão ao MV do Professor: Eduardo de Souza Goiabeira ao MV",
     "analista_responsavel": "HELBERT",
     "prioridade": "Média"
   },
@@ -8931,8 +8931,8 @@ export const tickets: ITicket[] = [
     "titulo": "Diário",
     "solicitante": "Aline Luciano\naline.luciano@escolamobile.com.br",
     "descricao": "Boa tarde! Tudo bem?\n\n\nSou a coordenadora do 7º ano do programa regular junto à Paula Mendes em cópia neste e-mail. \nQuero pedir uma ajuda para ter acesso ao DE de todas as disciplinas do 7º ano. Atualmente, tenho acesso apenas em Orientação Educacional e Língua Portuguesa. Precisa de acesso em Matemática, Inglês, História, Geografia, Ciências,  Educação Física e Artes.\nAproveito este e-mail para pedir o mesmo para a Paula Cristina (Kika), tendo em vista que ela também está sem esse acesso. Não temos conseguido aprovar as alterações de notas e pedidos de abertura de atas para ajustes.\n\nDesde já, muito obrigada!\n\nAbraços,\n\nAline Luciano\nCOORDENAÇÃO",
-    "status": "Em andamento",
-    "solucao": "",
+    "status": "Resolvido",
+    "solucao": "Foi realizado a liberação dos acessos para todas as turmas na série do 7° ano Parcial em todas as Disciplinas mencionadas.",
     "analista_responsavel": "HELBERT",
     "prioridade": "Média"
   }

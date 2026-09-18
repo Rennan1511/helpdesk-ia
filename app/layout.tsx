@@ -37,7 +37,8 @@ export default function RootLayout({
     !isTicketPage;
 
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR"
+    data-bry-content-script-bryweb="1">
       <body>
         <ThemeProvider>
           {isLoginPage ? (
